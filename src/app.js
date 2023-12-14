@@ -25,9 +25,16 @@ window.onload = function() {
     }
   }
 
-  document.querySelector("#generate").onclick = () => {
-    document.querySelector("#domain").innerHTML = `<h1>${
-      domainNames[Math.floor(Math.random() * domainNames.length)]
-    }</h1>`;
+  const generateButton = document.querySelector("#generate");
+  const domainContainer = document.querySelector("#domain");
+
+  generateButton.onclick = () => {
+    domainContainer.innerHTML = "<h1>Generated Domains:</h1>";
+
+    domainNames.forEach(domain => {
+      const domainElement = document.createElement("p");
+      domainElement.textContent = domain;
+      domainContainer.appendChild(domainElement);
+    });
   };
 };
